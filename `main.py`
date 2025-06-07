@@ -1,0 +1,20 @@
+from energy_analysis.data_loader import load_energy_data
+from energy_analysis.analyzer import (
+    total_consumption,
+    peak_usage_times,
+    average_consumption,
+    consumption_by_system
+)
+from energy_analysis.reporter import print_summary, plot_consumption
+
+def main():
+    df = load_energy_data('data/sample_energy_data.csv')
+    total = total_consumption(df)
+    avg = average_consumption(df)
+    peak_time, peak_val = peak_usage_times(df)
+    by_system = consumption_by_system(df)
+    print_summary(total, avg, peak_time, peak_val, by_system)
+    plot_consumption(df)
+
+if __name__ == "__main__":
+    main()
