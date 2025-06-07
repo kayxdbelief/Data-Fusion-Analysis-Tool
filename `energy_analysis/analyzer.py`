@@ -1,0 +1,16 @@
+def total_consumption(df):
+    """Calculate total energy consumption."""
+    return df['energy_kwh'].sum()
+
+def peak_usage_times(df):
+    """Find the timestamp and value of peak energy usage."""
+    peak = df.loc[df['energy_kwh'].idxmax()]
+    return peak['timestamp'], peak['energy_kwh']
+
+def average_consumption(df):
+    """Calculate average energy consumption."""
+    return df['energy_kwh'].mean()
+
+def consumption_by_system(df):
+    """Aggregate energy consumption by system."""
+    return df.groupby('system')['energy_kwh'].sum().sort_values(ascending=False)
