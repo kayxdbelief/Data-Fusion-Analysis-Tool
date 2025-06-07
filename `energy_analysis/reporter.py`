@@ -1,0 +1,17 @@
+def print_summary(total, avg, peak_time, peak_val, by_system):
+    print(f"Total energy consumed: {total:.2f} kWh")
+    print(f"Average consumption: {avg:.2f} kWh")
+    print(f"Peak usage: {peak_val:.2f} kWh at {peak_time}")
+    print("\nConsumption by system:")
+    print(by_system)
+    print()
+
+def plot_consumption(df):
+    import matplotlib.pyplot as plt
+    df_grouped = df.groupby('timestamp')['energy_kwh'].sum()
+    df_grouped.plot()
+    plt.title("Total Energy Consumption Over Time")
+    plt.xlabel("Timestamp")
+    plt.ylabel("kWh")
+    plt.tight_layout()
+    plt.show()
